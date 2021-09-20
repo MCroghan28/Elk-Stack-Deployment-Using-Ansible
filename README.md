@@ -6,15 +6,15 @@ The files in this repository were used to configure the network depicted below.
 
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the Ansible file may be used to install only certain pieces of it, such as Filebeat.
 
-  - https://filebeat-playbook.yml
-  - https://ansible.cfg
-  - https://docker-playbook.yml
-  - https://filebeat-config.yml
-  - https://install-elk.yml
-  - https://metricbeat-playbook.yml
-  - https://metricbeat.yml
- 
-This document contains the following details:
+- [ansible.cfg](https://github.com/MCroghan28/Ansible-for-WashU/blob/94dc069617ff0f84eb4eeb704fcb2ec582ccf2be/Ansible/ansible.cfg)
+- [docker-playbook.yml](https://github.com/MCroghan28/Ansible-for-WashU/blob/94dc069617ff0f84eb4eeb704fcb2ec582ccf2be/Ansible/docker-playbook.yml)
+- [filebeat-config.yml](https://github.com/MCroghan28/Ansible-for-WashU/blob/94dc069617ff0f84eb4eeb704fcb2ec582ccf2be/Ansible/filebeat-config.yml)
+- [filebeat-playbook.yml](https://github.com/MCroghan28/Ansible-for-WashU/blob/94dc069617ff0f84eb4eeb704fcb2ec582ccf2be/Ansible/filebeat-playbook.yml)
+- [install-elk.yml](https://github.com/MCroghan28/Ansible-for-WashU/blob/94dc069617ff0f84eb4eeb704fcb2ec582ccf2be/Ansible/install-elk.yml)
+- [metricbeat-playbook.yml](https://github.com/MCroghan28/Ansible-for-WashU/blob/94dc069617ff0f84eb4eeb704fcb2ec582ccf2be/Ansible/metricbeat-playbook.yml)
+- [metricbeat.yml](https://github.com/MCroghan28/Ansible-for-WashU/blob/94dc069617ff0f84eb4eeb704fcb2ec582ccf2be/Ansible/metricbeat.yml)
+
+ This document contains the following details:
 - Description of the Topologu
 - Access Policies
 - ELK Configuration
@@ -27,40 +27,39 @@ This document contains the following details:
 
 The main purpose of this network is to expose a load-balanced and monitored instance of DVWA, the D*mn Vulnerable Web Application.
 
-Load balancing ensures that the application will be highly _____, in addition to restricting _____ to the network.
-- _TODO: What aspect of security do load balancers protect? What is the advantage of a jump box?_
+Load balancing ensures that the application will be highly available, in addition to restricting access to the network. Load balancing ensures availability by
+distributing traffic over multiple servers and ensures traffic is sent to only servers that are online. Jump boxes allow for more easy administration of multiple 
+systems and provide an additional layer between the outside and internal assets.
 
-Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the _____ and system _____.
-- _TODO: What does Filebeat watch for?_
-- _TODO: What does Metricbeat record?_
+Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the event logs and system metrics.
 
 The configuration details of each machine may be found below.
-_Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdown_tables) to add/remove values from the table_.
 
-| Name     | Function | IP Address | Operating System |
-|----------|----------|------------|------------------|
-| Jump Box | Gateway  | 10.0.0.1   | Linux            |
-| TODO     |          |            |                  |
-| TODO     |          |            |                  |
-| TODO     |          |            |                  |
+| Name       | Function | IP Address | Operating System |
+|------------|----------|------------|------------------|
+| Jump Box   | Gateway  | 10.0.0.4   | Linux            |
+| Web 1      | Server   | 10.0.0.5   | Linux            |
+| Web 2      | Server   | 10.0.0.6   | Linux            |
+| Elk-Ubuntu | Server   | 10.1.0.4   | Linux            |
 
 ### Access Policies
 
 The machines on the internal network are not exposed to the public Internet. 
 
-Only the _____ machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
-- _TODO: Add whitelisted IP addresses_
+Only the Jump Box can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
+- 75.132.53.123
 
-Machines within the network can only be accessed by _____.
-- _TODO: Which machine did you allow to access your ELK VM? What was its IP address?_
+Machines within the network can only be accessed by the Jump Box.
+The Elk-Ubuntu server can be accessed over port 5601 from 75.132.53.123.
 
 A summary of the access policies in place can be found in the table below.
 
-| Name     | Publicly Accessible | Allowed IP Addresses |
-|----------|---------------------|----------------------|
-| Jump Box | Yes/No              | 10.0.0.1 10.0.0.2    |
-|          |                     |                      |
-|          |                     |                      |
+| Name         | Publicly Accessible | Allowed IP Addresses |
+|----------    |---------------------|----------------------|
+| Jump Box     | Yes                 | 75.132.53.123        |
+| Web 1        | No                  |                      |
+| Web 2        | No                  |                      |
+| Elk -Ubuntu  | Yes                 | 75.132.53.123        |
 
 ### Elk Configuration
 
