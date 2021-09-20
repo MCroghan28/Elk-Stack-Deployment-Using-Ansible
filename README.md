@@ -115,4 +115,4 @@ SSH into the control node and follow the steps below:
 - Update the hosts file found in /etc/ansible/hosts to include the Elk virtual machine along with its IP address as a separate group.
 - Run the playbook, and navigate to [(Elk-VM-Public-IP-Address):5601/app/Kibana](http://[your.Elk-VM.External.IP]:5601/app/kibana) to check that the installation worked as expected.
 
-_As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
+
