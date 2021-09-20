@@ -68,16 +68,26 @@ the chance of human error, and makes it easy to configure multiple machines at o
 
 
 The playbook implements the following tasks:
--installs docker.io, python3, and docker
--configures the virtual machine where Elk is being installed to use more memory *The Elk container will not run without this setting!*
--uses Ansible's sysctl module to automatically run in case the virutal machine is restarted
--configures the Elk container to start with port mappings: 
-    - 5601:5601
-    - 9200:9200
-    - 5044:5044
-- starts the container
-- enables the docker service on boot so if the virtual machine is restarted, the docker service run automatically.
-- 
+
+  -installs docker.io, python3, and docker
+
+  -configures the virtual machine where Elk is being installed to use more memory *The Elk container will not run without this setting!*
+
+  -uses Ansible's sysctl module to automatically run in case the virutal machine is restarted
+
+  -configures the Elk container to start with port mappings: 
+    
+    -5601:5601
+    
+    -9200:9200
+    
+    -5044:5044
+    
+  -starts the container
+  
+  -enables the docker service on boot so if the virtual machine is restarted, the docker service run automatically:
+  
+  ![Screenshot of the Elk-install Playbook](Images/Screenshot-Elk-Install.PNG)
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
